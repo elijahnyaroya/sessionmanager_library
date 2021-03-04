@@ -80,6 +80,7 @@ public class SessionManager  {
     private static final String KEY_GENERALAPPSETTINGS = "generalAppsettings";
     private static final String KEY_APPSTRINGS = "appstrings";
     private static final String KEY_URL_PATH = "url_path";
+    private static final String KEY_ALERTDIALOGSTYLING = "alertedittext_stylings";
 
     public static final int  UI_CANCEL = 0;
     public static final int  UI_OK = 1;
@@ -486,9 +487,21 @@ public class SessionManager  {
         System.out.println( " Setting KEY_URL_PATH "+url+" recorded");
     }
 
-        public static String getURL () {
-            System.out.println( " Getting KEY_URL_PATH "+pref.getString(KEY_URL_PATH, ""));
-            return pref.getString(KEY_URL_PATH, "");
-        }
+    public static String getURL () {
+        System.out.println( " Getting KEY_URL_PATH "+pref.getString(KEY_URL_PATH, ""));
+        return pref.getString(KEY_URL_PATH, "");
+    }
+
+    // Setting Alert dialog editTextStylings
+    public static void setAlertDialogStyling (int style) {
+        editor.putInt(KEY_ALERTDIALOGSTYLING, style);
+        editor.commit();
+        System.out.println( " Setting KEY_URL_PATH "+style+" recorded");
+    }
+
+    public static int getAlertDialogStyling () {
+        System.out.println( " Getting KEY_URL_PATH "+pref.getInt(KEY_URL_PATH, 0));
+        return pref.getInt(KEY_ALERTDIALOGSTYLING, 0);
+    }
 
 }
