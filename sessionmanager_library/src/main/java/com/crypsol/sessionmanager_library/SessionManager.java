@@ -493,15 +493,15 @@ public class SessionManager  {
     }
 
     // Setting Alert dialog editTextStylings
-    public static void setAlertDialogStyling (int style) {
-        editor.putInt(KEY_ALERTDIALOGSTYLING, style);
+    public static void setAlertDialogStyling (String style) {
+        editor.putString(KEY_ALERTDIALOGSTYLING, style);
         editor.commit();
         System.out.println( " Setting KEY_URL_PATH "+style+" recorded");
     }
 
-    public static int getAlertDialogStyling () {
-        System.out.println( " Getting KEY_URL_PATH "+pref.getInt(KEY_URL_PATH, 0));
-        return pref.getInt(KEY_ALERTDIALOGSTYLING, 0);
+    public static String  getAlertDialogStyling () {
+        System.out.println( " Getting KEY_URL_PATH "+pref.getString(KEY_URL_PATH, ""));
+        return pref.getString(KEY_ALERTDIALOGSTYLING, "");
     }
 
 }
