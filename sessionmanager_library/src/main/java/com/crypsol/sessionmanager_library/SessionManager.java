@@ -79,6 +79,7 @@ public class SessionManager  {
 
     private static final String KEY_GENERALAPPSETTINGS = "generalAppsettings";
     private static final String KEY_APPSTRINGS = "appstrings";
+    private static final String KEY_URL_PATH = "url_path";
 
     public static final int  UI_CANCEL = 0;
     public static final int  UI_OK = 1;
@@ -477,4 +478,17 @@ public class SessionManager  {
         return jsonObject;
 
     }
+
+    // Setting Url Path
+    public static void setURL (String url) {
+        editor.putString(KEY_URL_PATH, url);
+        editor.commit();
+        System.out.println( " Setting KEY_URL_PATH "+url+" recorded");
+    }
+
+        public static String getURL () {
+            System.out.println( " Getting KEY_URL_PATH "+pref.getString(KEY_URL_PATH, ""));
+            return pref.getString(KEY_URL_PATH, "");
+        }
+
 }
