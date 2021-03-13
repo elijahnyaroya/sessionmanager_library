@@ -22,6 +22,7 @@ import static android.Manifest.permission.READ_PHONE_STATE;
 import static android.Manifest.permission.READ_SMS;
 import static android.Manifest.permission.SEND_SMS;
 
+
 public class SessionManager  {
     // TODO 221 We need to establish the usual persistence hierarchy; DB <==> Flash <==> RAM
     // TODO  Such that we can reduce the settings system to be efficient and compact. Same goes for the
@@ -65,6 +66,7 @@ public class SessionManager  {
 
 
     private static final String KEY_CONTACTSELECTED = "contacts";
+    private static final String KEY_NEXTALERTBOX = "nextAlertBox";
     private static final String KEY_MyCONTACTLIST = "contactlist";
     private static final String KEY_CHECK_IF_LANG_COUNTRY_IS_SET = "county_lang";
 
@@ -76,6 +78,7 @@ public class SessionManager  {
     private static final String KEY_APPSETTINGS = "appSettings";
     private static final String KEY_APPSOP = "asppSop";
     private static final String KEY_APPTOAST = "asppToast";
+    private static final String KEY_LAYOUTVIEW = "layoutview";
 
     private static final String KEY_GENERALAPPSETTINGS = "generalAppsettings";
     private static final String KEY_APPSTRINGS = "appstrings";
@@ -332,6 +335,17 @@ public class SessionManager  {
         return pref.getString(KEY_SHOWID, "");
     }
 
+    //Set next alert dialog
+    public static void setNextalertBox(String nextalertBox) {
+        editor.putString(KEY_NEXTALERTBOX, nextalertBox);
+        System.out.println("KEY_NEXTALERTBOX " +nextalertBox);
+        editor.commit();
+    }
+
+    public static String getNextalertBox () {
+        return pref.getString(KEY_NEXTALERTBOX, "0");
+    }
+
     //// Current SHOWID being set, prior to displaying it.
 
     public static void setCurrentDashBoardID(String dashBoardID) {
@@ -493,15 +507,23 @@ public class SessionManager  {
     }
 
     // Setting Alert dialog editTextStylings
-    public static void setAlertDialogStyling (String style) {
-        editor.putString(KEY_ALERTDIALOGSTYLING, style);
+    public static void setAlertDialogStyling (int style) {
+        editor.putInt(KEY_ALERTDIALOGSTYLING, style);
         editor.commit();
         System.out.println( " Setting KEY_URL_PATH "+style+" recorded");
     }
 
-    public static String  getAlertDialogStyling () {
-        System.out.println( " Getting KEY_URL_PATH "+pref.getString(KEY_URL_PATH, ""));
-        return pref.getString(KEY_ALERTDIALOGSTYLING, "");
+    public static int getAlertDialogStyling () {
+        System.out.println( " Getting KEY_URL_PATH "+pref.getInt(KEY_URL_PATH, 0));
+        return pref.getInt(KEY_ALERTDIALOGSTYLING, 0);
     }
 
+    public static void setLayoutView(String layout) {
+        editor.putString(KEY_LAYOUTVIEW, layout);
+        editor.commit();
+    }
+
+    public static String getLayoutView() {
+        return pref.getString(KEY_LAYOUTVIEW, "");
+    }
 }
