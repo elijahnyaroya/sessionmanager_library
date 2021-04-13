@@ -63,6 +63,7 @@ public class SessionManager  {
     private static final String KEY_CURRENCY = "currency";
     private static final String KEY_CURRENCYlIST = "currencyList";
     private static final String KEY_ERRORREPORTING  = "errorReportingMessage";
+    private static final String KEY_DEFAULTPHONELANG  = "defaultlanguage";
 
 
     private static final String KEY_CONTACTSELECTED = "contacts";
@@ -525,5 +526,15 @@ public class SessionManager  {
 
     public static String getLayoutView() {
         return pref.getString(KEY_LAYOUTVIEW, "");
+    }
+
+    //Set Phone Default Language
+    public static void setPhoneDefaultLanguage(String language) {
+        editor.putString(KEY_DEFAULTPHONELANG, language);
+        editor.commit();
+    }
+
+    public static String setPhoneDefaultLnaguage() {
+        return pref.getString(KEY_DEFAULTPHONELANG, "");
     }
 }
