@@ -534,7 +534,7 @@ public class SessionManager  {
         editor.commit();
     }
 
-    public static String setPhoneDefaultLnaguage() {
+    public static String getPhoneDefaultLnaguage() {
         return pref.getString(KEY_DEFAULTPHONELANG, "");
     }
 }
